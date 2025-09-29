@@ -136,5 +136,29 @@ data.main.temp      → temperature (°C)
 data.main.humidity  → humidity (%)
 data.wind.speed     → wind speed (m/s)
 */
+document.addEventListener("DOMContentLoaded", function () {
+    const wxBtn = document.getElementById("t4-loadWx");
+    const tempEl = document.getElementById("t4-temp");
+    const humEl = document.getElementById("t4-hum");
+    const windEl = document.getElementById("t4-wind");
+    const errEl = document.getElementById("t4-err");
 
+    wxBtn.addEventListener("click", async function () {
+        try {
+            const apiKey = "e957c59e825f9baac692d71693f02197"; 
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=Dammam&units=metric&appid=${apiKey}`;
+            
+            const res = await fetch(url);
+            if (!res.ok) throw new Error("Network response was not ok");
+            const data = await res.json();
+
+            tempEl.textContent = `${data.main.temp} °C`;
+            humEl.textContent = `${data.main.humidity} %`;
+            windEl.textContent = `${data.wind.speed} m/s`;
+            errEl.textContent = "";
+        } catch (err) {
+            errEl.textContent = "Failed to load weather data.";
+        }
+    });
+});
 
