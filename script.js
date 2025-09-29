@@ -45,6 +45,20 @@ button.addEventListener("click", function () {
     // change text here
 });
 */
+document.addEventListener("DOMContentLoaded", function () {
+    // TODO1: Welcome Board
+    const welcomeMsg = document.getElementById("t1-msg");
+    welcomeMsg.textContent = "Hello, World!";
+
+    // TODO2: Interaction Corner
+    const button = document.getElementById("t2-btn");
+    const status = document.getElementById("t2-status");
+
+    button.addEventListener("click", function () {
+        status.textContent = "You clicked the button!";
+    });
+});
+
 
 
 
