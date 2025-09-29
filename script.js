@@ -41,6 +41,9 @@ button.addEventListener("click", function () {
     // change text here
 });
 */
+document.getElementById("t2-btn").addEventListener("click", function () {
+    document.getElementById("t2-status").innerHTML = "You clicked the button!";
+});
 
  
 
